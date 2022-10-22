@@ -17,31 +17,10 @@ import java.io.InputStreamReader;
 
 public class HelloApplication extends Application {
 
-    private void savehtml(String file){
-        Process proc;
 
-        try {
-            proc = Runtime.getRuntime().exec("python " + file);
-            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            String line = null;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
-            }
-            in.close();
-            proc.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
     @Override
     public void start(Stage stage) throws IOException {
         HelloController h = new HelloController();
-
-        savehtml("src\\visualization\\dr_age.py");
-        savehtml("src\\visualization\\dr_cal.py");
-
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);

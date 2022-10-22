@@ -24,7 +24,7 @@ def dr_age():
     #visualization
     age_layout = go.Layout(
         title=
-        {   'text': "default rate and age",
+        {
             'y':0.9,
             'x':0.45,
             'xanchor': 'center', 

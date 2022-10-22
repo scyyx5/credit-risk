@@ -50,7 +50,7 @@ def dr_cal():
     # visualization
     cal_layout = go.Layout(
     title=
-        {   'text': "default rate and calendar time",
+        {
             'y':0.9,
             'x':0.45,
             'xanchor': 'center', 

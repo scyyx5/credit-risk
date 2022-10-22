@@ -8,8 +8,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+
 
 
 public class HelloController {
@@ -50,9 +54,28 @@ public class HelloController {
 
     }
 
+    private void savehtml(String file){
+        Process proc;
+
+        try {
+            proc = Runtime.getRuntime().exec("python " + file);
+            BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
+            proc.waitFor();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void initialize() throws MalformedURLException {
-
+        savehtml("src\\visualization\\dr_age.py");
+        savehtml("src\\visualization\\dr_cal.py");
         dr_agewebEngine = dr_ageWebView.getEngine();
         File dr_age_file = new File("res\\dr_age.html");
         dr_agewebEngine.load(dr_age_file.toURI().toURL().toString());
