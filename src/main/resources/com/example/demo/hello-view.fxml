@@ -2,12 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
 
 <!--
         <?xml version="1.0" encoding="UTF-8"?>
@@ -35,7 +35,7 @@
         </VBox>
         -->
 
-<VBox alignment="CENTER" prefHeight="427.0" prefWidth="598.0" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<VBox alignment="CENTER" prefHeight="427.0" prefWidth="598.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -44,16 +44,18 @@
     <TabPane prefHeight="369.0" prefWidth="575.0" tabClosingPolicy="UNAVAILABLE">
         <Tab onSelectionChanged="#dr_ageTab" text="dr_age">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <CheckBox layoutX="49.0" layoutY="18.0" mnemonicParsing="false"
-                          onAction="#ondr_agePredictedButtonClick" text="predicted"/>
-                <Pane fx:id="dr_agePane" layoutX="26.0" layoutY="45.0" prefHeight="234.0" prefWidth="510.0"/>
+                <CheckBox layoutX="49.0" layoutY="18.0" mnemonicParsing="false" onAction="#ondr_agePredictedButtonClick" text="predicted" />
+                <Pane fx:id="dr_agePane" layoutX="26.0" layoutY="45.0" prefHeight="234.0" prefWidth="510.0">
+                    <WebView fx:id="dr_ageWebView" prefHeight="234.0" prefWidth="511.0"/>
+                </Pane>
             </AnchorPane>
         </Tab>
         <Tab onSelectionChanged="#dr_calTab" text="dr_cal">
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                <CheckBox layoutX="49.0" layoutY="18.0" mnemonicParsing="false"
-                          onAction="#ondr_calPredictedButtonClick" text="predicted"/>
-                <Pane fx:id="dr_calPane" layoutX="26.0" layoutY="45.0" prefHeight="234.0" prefWidth="510.0"/>
+                <CheckBox layoutX="49.0" layoutY="18.0" mnemonicParsing="false" onAction="#ondr_calPredictedButtonClick" text="predicted" />
+                <Pane fx:id="dr_calPane" layoutX="26.0" layoutY="45.0" prefHeight="234.0" prefWidth="510.0">
+                    <WebView fx:id="dr_calWebView" prefHeight="234.0" prefWidth="511.0"/>
+                </Pane>
             </AnchorPane>
         </Tab>
     </TabPane>
