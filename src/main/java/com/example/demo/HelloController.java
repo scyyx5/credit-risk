@@ -3,6 +3,7 @@ package com.example.demo;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
@@ -19,11 +20,11 @@ import java.net.MalformedURLException;
 public class HelloController {
 
     @FXML
-    private Pane dr_agePane;
-
-    @FXML
     private WebView dr_ageWebView;
     WebEngine dr_agewebEngine = null;
+    @FXML
+    private CheckBox dr_age_predicted;
+
 
     @FXML
     void dr_ageTab(Event event) {
@@ -41,16 +42,22 @@ public class HelloController {
 
     }
 
-    @FXML
-    private Pane dr_calPane;
 
     @FXML
     private WebView dr_calWebView;
     WebEngine dr_calwebEngine = null;
-
     @FXML
-    void ondr_calPredictedButtonClick(ActionEvent event) {
-
+    private CheckBox dr_cal_predicted;
+    @FXML
+    void ondr_calPredictedButtonClick(ActionEvent event) throws MalformedURLException {
+        if(dr_cal_predicted.isSelected()){
+            File f = new File("res\\dr_age.html");
+            dr_calwebEngine.load(f.toURI().toURL().toString());
+        }else{
+            File f = new File("res\\dr_cal.html");
+            dr_calwebEngine.load(f.toURI().toURL().toString());
+        }
+        //System.out.println("click");
 
     }
 
