@@ -15,7 +15,7 @@ from dateutil.relativedelta import relativedelta
 
 # This is used to change integer to date list
 def datelist(list):
-    start_date = datetime(2016,1,1)
+    start_date = datetime(2018,1,1)
     result = []
     for i in list:
         result_date = start_date +relativedelta(months=i)
@@ -26,7 +26,9 @@ def datelist(list):
 
 
 
-def dr_cal():
+def dr_cal_visualization():
+
+    now = datetime.now()
     
     # data = pd.read_csv('../../visualization/simDTS.csv')
     data = pd.read_csv('src/visualization/simDTS.csv')
@@ -84,4 +86,4 @@ def dr_cal():
     py.plot(cal_fig, filename='res/dr_cal.html',auto_open = False)
 
 
-dr_cal()
+dr_cal_visualization()
