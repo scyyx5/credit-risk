@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox alignment="CENTER" prefHeight="367.0" prefWidth="592.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" fx:controller="com.example.demo.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="welcomeText" />
+   <Pane prefHeight="317.0" prefWidth="552.0">
+       fx:controller = "com.example.demo.controller"
+      <children>
+         <CheckBox layoutX="423.0" layoutY="20.0" mnemonicParsing="false" onAction="#onPredictedButtonClick" text="Predicted" />
+         <WebView layoutX="56.0" layoutY="46.0" prefHeight="200.0" prefWidth="435.0" />
+      </children>
+   </Pane>
+</VBox>
