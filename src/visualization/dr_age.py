@@ -27,6 +27,9 @@ def dr_age_visualization():
     pct_age["dr"] = pct_age["dr"]/pct_age["number"]
     pct_age["edr"] = pct_age["edr"]/pct_age["number"]
 
+    x_range = [pct_age.index.min(),pct_age.index.max()]
+    y_range = [pct_age["dr"].append(pct_age["edr"]).min(),pct_age["dr"].append(pct_age["edr"]).max()]
+
     age_layout = go.Layout(
         title=
         {
@@ -37,12 +40,11 @@ def dr_age_visualization():
         },
         xaxis=dict(
             title="age(month)",
-            range=[pct_age.index.min(),pct_age.index.max()]
+            range=x_range
         ),
-
         yaxis=dict(
             title="default rate(%)",
-            range=[pct_age["dr"].append(pct_age["edr"]).min(),pct_age["dr"].append(pct_age["edr"]).max()]
+            range=y_range
         )
     )
 
@@ -58,7 +60,7 @@ def dr_age_visualization():
         x = pct_age.index[0:current_age],
         y = pct_age["edr"][0:current_age],
         mode = 'lines',
-        name = 'predicted default rate'   
+        name = 'expected default rate'
     )
 
     age_fig = go.Figure({'data': [age_trace0, age_trace1],'layout': age_layout})
@@ -80,7 +82,7 @@ def dr_age_visualization():
         x = pct_age.index,
         y = pct_age["edr"],
         mode = 'lines',
-        name = 'predicted default rate'
+        name = 'expected default rate'
     )
 
     age_predicted_fig = go.Figure({'data': [age_predicted_trace0, age_predicted_trace1],'layout': age_layout})
