@@ -3,6 +3,7 @@ module com.example.demo {
     requires javafx.fxml;
     requires jython.slim;
     requires javafx.web;
+    requires javafx.graphics;
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;

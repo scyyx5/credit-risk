@@ -1,14 +1,16 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import csv
 
 import plotly.express as p
 import plotly.offline as py
 # py.init_notebook_mode(connected=True)
 import plotly.graph_objs as go
+import plotly.figure_factory as ff    
 
-
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 
@@ -17,8 +19,8 @@ import plotly.graph_objs as go
 #visualization
 def dr_age_visualization():
     current_age = 10
-    #data = pd.read_csv('simDTS.csv')
-    data = pd.read_csv('src/visualization/simDTS.csv')
+    data = pd.read_csv('../../visualization/simDTS.csv')
+    #data = pd.read_csv('src/visualization/simDTS.csv')
 
     #pre processing
     pct_age = data.groupby(['t']).agg(number = ('t','count'),dr=('y','sum'),edr=('pd','sum'),std = ('pd','std'))
@@ -64,7 +66,7 @@ def dr_age_visualization():
     age_fig = go.Figure({'data': [age_trace0, age_trace1],'layout': age_layout})
     #age_fig.show()
     # save image
-    py.plot(age_fig,filename = 'res/dr_age.html',auto_open = False)
+    py.plot(age_fig,filename = '../../../res/dr_age.html',auto_open = False)
 
 
 
@@ -86,6 +88,6 @@ def dr_age_visualization():
     age_predicted_fig = go.Figure({'data': [age_predicted_trace0, age_predicted_trace1],'layout': age_layout})
     #age_fig.show()
     # save image
-    py.plot(age_predicted_fig,filename = 'res/dr_age_predicted.html',auto_open = False)
+    py.plot(age_predicted_fig,filename = '../../../res/dr_age_predicted.html',auto_open = False)
 
 dr_age_visualization()

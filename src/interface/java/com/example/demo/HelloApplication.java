@@ -6,11 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import org.python.util.PythonInterpreter;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 
 
@@ -23,11 +19,12 @@ public class HelloApplication extends Application {
         HelloController h = new HelloController();
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setFullScreen(true);
+        //Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setTitle("My FYP");
         stage.setScene(scene);
         stage.show();
-
     }
 
     public static void main(String[] args) {
@@ -38,6 +35,12 @@ public class HelloApplication extends Application {
 
 
 /**
+ *
+ * import org.python.util.PythonInterpreter;
+ *
+ * import java.io.BufferedReader;
+ * import java.io.IOException;
+ * import java.io.InputStreamReader;
  public class HelloApplication extends Application {
 @Override
 public void start(Stage stage) throws IOException {

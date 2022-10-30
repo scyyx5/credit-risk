@@ -36,15 +36,16 @@ def dr_cal_visualization():
 
     current_month = relativedelta(datetime.now(),start_date).months + relativedelta(datetime.now(),start_date).years * 12
     
-    #data = pd.read_csv('simDTS.csv')
-    data = pd.read_csv('src/visualization/simDTS.csv')
+    data = pd.read_csv('../../visualization/simDTS.csv')
+    #data = pd.read_csv('src/visualization/simDTS.csv')
 
     #pre processing
-    #data['cal'] = data['t'] + data['v']
-    #grouped_cal = data.groupby('cal')[['cal','y','pd']]
-    #pct_cal = grouped_cal.agg({'cal' : 'count','y':'sum','pd':'sum'})
+    data['cal'] = data['t'] + data['v']
+    grouped_cal = data.groupby('cal')[['cal','y','pd']]
+    pct_cal = grouped_cal.agg({'cal' : 'count','y':'sum','pd':'sum'})
 
-    #pre processing
+    #pct_cal
+
     data['cal'] = data['t'] + data['v']
     pct_cal = data.groupby(['cal']).agg(number = ('cal','count'),dr=('y','sum'),edr=('pd','sum'))
     #pct_cal
@@ -99,9 +100,9 @@ def dr_cal_visualization():
 
 
     cal_fig = go.Figure({'data': [cal_trace0,cal_trace1],'layout': cal_layout})
-    #cal_fig.show()
-    py.plot(cal_fig, filename='res/dr_cal.html',auto_open = False)
-    #py.plot(cal_fig, filename='dr_cal.html',auto_open = False)
+    cal_fig.show()
+    #py.plot(cal_fig, filename='res/dr_cal.html',auto_open = False)
+    py.plot(cal_fig, filename='../../../res/dr_cal.html',auto_open = False)
 
     #plot with predicted value
     cal_trace0 = go.Scatter(
@@ -119,9 +120,9 @@ def dr_cal_visualization():
     )
 
     cal_fig = go.Figure({'data': [cal_trace0,cal_trace1],'layout': cal_layout})
-    #cal_fig.show()
+    cal_fig.show()
 
-    py.plot(cal_fig, filename='res/dr_cal_predicted.html',auto_open = False)
-    #py.plot(cal_fig, filename='dr_cal_predicted.html',auto_open = False)
+    #py.plot(cal_fig, filename='res/dr_cal_predicted.html',auto_open = False)
+    py.plot(cal_fig, filename='../../../res/dr_cal_predicted.html',auto_open = False)
 
 dr_cal_visualization()
