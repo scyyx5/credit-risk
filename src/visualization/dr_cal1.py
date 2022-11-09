@@ -56,6 +56,7 @@ def dr_cal_visualization():
     pct_cal['date'] = datelist(pct_cal.index)
 
 
+
     # visualization
     x_range = [pct_cal.index.min(),pct_cal.index.max()]
     y_range = [pct_cal["dr"].append(pct_cal["edr"]).min(),pct_cal["dr"].append(pct_cal["edr"]).max()]
@@ -100,7 +101,7 @@ def dr_cal_visualization():
 
 
     cal_fig = go.Figure({'data': [cal_trace0,cal_trace1],'layout': cal_layout})
-    cal_fig.show()
+    #cal_fig.show()
     #py.plot(cal_fig, filename='res/dr_cal.html',auto_open = False)
     py.plot(cal_fig, filename='../../../res/dr_cal.html',auto_open = False)
 
@@ -120,9 +121,10 @@ def dr_cal_visualization():
     )
 
     cal_fig = go.Figure({'data': [cal_trace0,cal_trace1],'layout': cal_layout})
-    cal_fig.show()
+    #cal_fig.show()
 
     #py.plot(cal_fig, filename='res/dr_cal_predicted.html',auto_open = False)
     py.plot(cal_fig, filename='../../../res/dr_cal_predicted.html',auto_open = False)
+
 
 dr_cal_visualization()

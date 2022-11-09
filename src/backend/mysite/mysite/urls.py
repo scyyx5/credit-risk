@@ -13,17 +13,39 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.urls import path
 from django.contrib import admin
 from django.urls import path,include
-from django.conf.urls import url
 from polls.views import *
-#from .router import router
+from rest_framework.authtoken import views
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from django.conf.urls import url
+'''
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Snippets API",
+      default_version='v3',
+      description="Test description",
+      terms_of_service="https://www.google.com/policies/terms/",
+      #terms_of_service="http://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
+)
+'''
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
+    #path('', views.index, name='index'),
+    #path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    #path('', include(router.urls))
+    #path('', include(router.urls)),
+    path('api/v1/login/', logIn,name = 'user log in'),
+    path('api/v1/Register/',Register.as_view(), name='auth_register'),
     url(r'^download_dr_age/',download_dr_age,name="download_dr_age"),
-    #url(r'^download_dr_cal/',download_dr_cal,name="download_dr_cal"),
+    url(r'^download_dr_cal/',download_dr_cal,name="download_dr_cal"),
 ]
 

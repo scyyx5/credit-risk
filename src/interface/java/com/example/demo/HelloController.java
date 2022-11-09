@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -27,8 +28,6 @@ public class HelloController {
     //use API to send HTML
     @FXML
     private final String dr_ageAPI = "download_dr_age/";
-
-
     @FXML
     private WebView dr_ageWebView;
     WebEngine dr_agewebEngine = null;
@@ -36,6 +35,28 @@ public class HelloController {
     private CheckBox dr_age_predicted;
     @FXML
     private Button dr_age_pre;
+    @FXML
+    private WebView dr_calWebView;
+    WebEngine dr_calwebEngine = null;
+    @FXML
+    private CheckBox dr_cal_predicted;
+    @FXML
+    private Button dr_cal_pre;
+    @FXML
+    private int count_dr_cal_predicted_click;
+    @FXML
+    private WebView lexisDiagramWebView;
+    WebEngine lexisDiagramEngine = null;
+    @FXML
+    private Label DefaultRateLabel;
+    @FXML
+    private Pane DefaultRatePane;
+    @FXML
+    private Label LexisDiagramLabel;
+    @FXML
+    private Pane LexisDiagramPane;
+    @FXML
+    private ComboBox<String> theme;
 
 
     @FXML
@@ -43,8 +64,7 @@ public class HelloController {
 
     }
 
-    @FXML
-    private int count_dr_age_predicted_click;
+
     @FXML
     void ondr_agePredictedButtonClick(ActionEvent event) throws MalformedURLException {
         if (dr_age_predicted.isSelected()) {
@@ -57,26 +77,12 @@ public class HelloController {
     }
 
     @FXML
-    void ondr_agePredictedButton(ActionEvent event) {
-
-    }
-
-
+    void ondr_agePredictedButton(ActionEvent event) {}
     @FXML
-    void dr_calTab(Event event) {
-
-    }
+    void dr_calTab(Event event) {}
 
 
-    @FXML
-    private WebView dr_calWebView;
-    WebEngine dr_calwebEngine = null;
-    @FXML
-    private CheckBox dr_cal_predicted;
-    @FXML
-    private Button dr_cal_pre;
-    @FXML
-    private int count_dr_cal_predicted_click;
+
     @FXML
     void ondr_calPredictedButtonClick(ActionEvent event) throws MalformedURLException {
         if(dr_cal_predicted.isSelected()){
@@ -135,23 +141,11 @@ public class HelloController {
     }
 
 
-    @FXML
-    private WebView lexisDiagramWebView;
-    WebEngine lexisDiagramEngine = null;
 
 
     //switch from different panes according to the left label
-    @FXML
-    private Label DefaultRateLabel;
 
-    @FXML
-    private Pane DefaultRatePane;
 
-    @FXML
-    private Label LexisDiagramLabel;
-
-    @FXML
-    private Pane LexisDiagramPane;
 
     public void clickDefaultRate(MouseEvent mouseEvent) {
         DefaultRatePane.setVisible(true);
@@ -162,6 +156,31 @@ public class HelloController {
         DefaultRatePane.setVisible(false);
         LexisDiagramPane.setVisible(true);
     }
+
+
+    @FXML
+    private void changeTheme() throws MalformedURLException {
+        String s = theme.getSelectionModel().getSelectedItem();
+        switch (s){
+            case "hot" -> {
+                File lexis_diagram = new File("res\\lexis_diagram_hot.html");
+                lexisDiagramEngine.load(lexis_diagram.toURI().toURL().toString());
+            }
+            case "Green_Blue" -> {
+                File lexis_diagram = new File("res\\lexis_diagram_YlGnBu.html");
+                lexisDiagramEngine.load(lexis_diagram.toURI().toURL().toString());
+            }
+            case "Oranges" -> {
+                File lexis_diagram = new File("res\\lexis_diagram_OrRd.html");
+                lexisDiagramEngine.load(lexis_diagram.toURI().toURL().toString());
+            }
+            case "grey" -> {
+                File lexis_diagram = new File("res\\lexis_diagram_greys.html");
+                lexisDiagramEngine.load(lexis_diagram.toURI().toURL().toString());
+            }
+        }
+    }
+
     public void initialize() throws MalformedURLException {
         //count_dr_age_predicted_click = 0;
         //count_dr_cal_predicted_click = 0;
@@ -181,8 +200,10 @@ public class HelloController {
         dr_calwebEngine.load(dr_cal_file.toURI().toURL().toString());
 
         lexisDiagramEngine = lexisDiagramWebView.getEngine();
-        File lexis_diagram = new File("res\\lexis_diagram.html");
+        File lexis_diagram = new File("res\\lexis_diagram_hot.html");
         lexisDiagramEngine.load(lexis_diagram.toURI().toURL().toString());
+
+        theme.setPromptText("hot");
 
 
         //System.out.println("miaomiao");

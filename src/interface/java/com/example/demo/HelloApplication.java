@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,17 +14,25 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-
+    private static Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
         HelloController h = new HelloController();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setFullScreen(true);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
+        ////////FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        //scene = new Scene(fxmlLoader.load());
+        //stage.setFullScreen(true);
         //Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load());
+        //LoginController l = new LoginController(stage);
+        ///////LoginController l = fxmlLoader.getController();
+
+
         stage.setTitle("My FYP");
         stage.setScene(scene);
+        ////////////l.setController(stage);
+
         stage.show();
     }
 
@@ -55,7 +64,7 @@ interpreter.exec("sys.path.append('C:\\Users\\86151\\AppData\\Local\\Programs\\P
 //interpreter.execfile("src\\visualization\\dr_age.py");
 
 
-FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
 Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 stage.setTitle("Hello!");
 stage.setScene(scene);

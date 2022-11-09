@@ -13,7 +13,7 @@ start_date = datetime(2019,1,1)
 def lexis_graph():
 
     #data = pd.read_csv('simDTS.csv')
-    data = pd.read_csv('src/visualization/simDTS.csv')
+    data = pd.read_csv('../../visualization/simDTS.csv')
 
     data['int_c'] = data['v'] + data['t']
     grouped_data = data.groupby(['t','int_c']).agg(def_num = ('y','sum'),number = ('t','count'),dr=('y','sum'))
@@ -59,14 +59,14 @@ def lexis_graph():
                     y=t_indices,
                     colorscale='hot_r',
                     hoverongaps = True))
-    
+
     fig_hot.update_layout(title="lexis diagram",
                 title_x=0.5,
                 xaxis_title = "calendar time",
                 yaxis_title = "age")
 
     #fig.show()
-    py.plot(fig_hot, filename='res/lexis_diagram_hot.html',auto_open = False)
+    py.plot(fig_hot, filename='../../../res/lexis_diagram_hot.html',auto_open = False)
     #py.plot(fig, filename='lexis_diagram.html',auto_open = False)
 
 #---------------------YlGnBu
@@ -83,7 +83,7 @@ def lexis_graph():
                 yaxis_title = "age")
 
     #fig.show()
-    py.plot(fig_YlGnBu, filename='res/lexis_diagram_YlGnBu.html',auto_open = False)
+    py.plot(fig_YlGnBu, filename='../../../res/lexis_diagram_YlGnBu.html',auto_open = False)
 
 
 #---------------------OrRd-------------
@@ -100,7 +100,7 @@ def lexis_graph():
                 yaxis_title = "age")
 
     #fig.show()
-    py.plot(fig_OrRd, filename='res/lexis_diagram_OrRd.html',auto_open = False)
+    py.plot(fig_OrRd, filename='../../../res/lexis_diagram_OrRd.html',auto_open = False)
 
 
 #---------------------greys-------------
@@ -117,7 +117,7 @@ def lexis_graph():
                 yaxis_title = "age")
 
     #fig.show()
-    py.plot(fig_greys, filename='res/lexis_diagram_greys.html',auto_open = False)
+    py.plot(fig_greys, filename='../../../res/lexis_diagram_greys.html',auto_open = False)
 
 
 lexis_graph()
