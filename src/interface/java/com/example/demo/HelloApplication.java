@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.API.UserAPI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import com.example.demo.API.dr_ageAPI;
 
 
 
@@ -34,6 +37,8 @@ public class HelloApplication extends Application {
         ////////////l.setController(stage);
 
         stage.show();
+        //dr_ageAPI a = new dr_ageAPI();
+        //a.dr_age();
     }
 
     public static void main(String[] args) {

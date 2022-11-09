@@ -46,6 +46,12 @@ urlpatterns = [
     path('api/v1/login/', logIn,name = 'user log in'),
     path('api/v1/Register/',Register.as_view(), name='auth_register'),
     url(r'^download_dr_age/',download_dr_age,name="download_dr_age"),
+    url(r'^download_dr_age_predicted/',download_dr_age_predicted,name="download_dr_age_predicted"),
     url(r'^download_dr_cal/',download_dr_cal,name="download_dr_cal"),
+    url(r'^download_dr_cal_predicted/',download_dr_cal_predicted,name="download_dr_cal_predicted"),
+    url(r'^download_lexis_hot/',download_lexis_hot,name="download_lexis_hot"),
+    url(r'^download_lexis_YlGnBu/',download_lexis_YlGnBu,name="download_lexis_YlGnBu"),
+    url(r'^download_lexis_OrRd/',download_lexis_OrRd,name="download_lexis_OrRd"),
+    url(r'^download_lexis_greys/',download_lexis_greys,name="download_lexis_greys"),
 ]
 

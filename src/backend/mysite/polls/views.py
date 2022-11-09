@@ -21,6 +21,7 @@ from .serializers import MyTokenObtainPairSerializer
 from .serializers import *
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny,IsAuthenticated
 
 #__________________________________login views___________________________________
 @api_view(['POST'])
@@ -95,6 +96,10 @@ class Register(generics.CreateAPIView):
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+
+#____________________________dr_age views__________________________________  authentication required
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
 def download_dr_age(request):
     try:
         dr_age1.dr_age_visualization()
@@ -108,31 +113,115 @@ def download_dr_age(request):
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_dr_age_predicted(request):
+    try:
+        dr_age1.dr_age_visualization()
+        # dr_age.dr_age()
+        file = open('../../../res/dr_age_predicted.html', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="dr_age.html"'
+        return response
+
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+#____________________________dr_cal views__________________________________  authentication required
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
 def download_dr_cal(request):
     try:
         #later: run the code first
         dr_cal1.dr_cal_visualization()
         file = open('../../../res/dr_cal.html', 'rb')
-        file = dr_cal1.dr_cal_visualization()
         response = HttpResponse(file)
         response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment;filename="dr_age.html"'
+        response['Content-Disposition'] = 'attachment;filename="dr_cal.html"'
         return response
     
     except:
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-def download_lexis(request):
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_dr_cal_predicted(request):
     try:
         #later: run the code first
         dr_cal1.dr_cal_visualization()
-        file = open('../../../res/dr_cal.html', 'rb')
+        file = open('../../../res/dr_cal_predicted.html', 'rb')
         response = HttpResponse(file)
         response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment;filename="dr_age.html"'
+        response['Content-Disposition'] = 'attachment;filename="dr_cal_predicted.html"'
+        return response
+
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+#-----------------------------lexis diagram---------------------------
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_lexis_hot(request):
+    try:
+        #later: run the code first
+        lexis1.lexis_graph()
+        file = open('../../../res/lexis_diagram_hot.html', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="lexis_diagram_hot.html"'
+        return response
+
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_lexis_YlGnBu(request):
+    try:
+        #later: run the code first
+        lexis1.lexis_graph()
+        file = open('../../../res/lexis_diagram_YlGnBu.html', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="lexis_diagram_YlGnBu.html"'
+        return response
+
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_lexis_OrRd(request):
+    try:
+        #later: run the code first
+        lexis1.lexis_graph()
+        file = open('../../../res/lexis_diagram_OrRd.html', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="lexis_diagram_OrRd.html"'
+        return response
+
+    except:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def download_lexis_greys(request):
+    try:
+        #later: run the code first
+        lexis1.lexis_graph()
+        file = open('../../../res/lexis_diagram_greys.html', 'rb')
+        response = HttpResponse(file)
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="lexis_diagram_greys.html"'
         return response
 
     except:

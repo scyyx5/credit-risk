@@ -9,9 +9,6 @@ import java.net.URLConnection;
 
 
 public class UserAPI {
-	private String email;
-	private String password;
-
 
 	/**
 	 *

@@ -32,9 +32,9 @@ public class LoginController {
 
     @FXML
     void loginClicked(MouseEvent event) throws IOException {
-        //UserAPI user = new UserAPI();
+        UserAPI user = new UserAPI();
         //user.login("http://127.0.0.1:8000/api/v1/login/","test@gmail.com","test123456");
-        //user.login("http://127.0.0.1:8000/api/v1/login/",email.getText(),password.getText());
+        user.login("http://127.0.0.1:8000/api/v1/login/",email.getText(),password.getText());
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("dashboard.fxml"));
         //Scene scene = new Scene(fxmlLoader.load(), 800, 600);
